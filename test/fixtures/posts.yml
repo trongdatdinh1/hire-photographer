@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  customer: one
+  photographer: one
+  hourly_rate: 9.99
+  status: MyString
+
+two:
+  title: MyString
+  customer: two
+  photographer: two
+  hourly_rate: 9.99
+  status: MyString

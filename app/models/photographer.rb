@@ -1,6 +1,12 @@
 class Photographer < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
+
+  has_and_belongs_to_many :customers
+  has_many :messages, as: :messageable
+  has_many :posts
+
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :location, presence: true
 end
