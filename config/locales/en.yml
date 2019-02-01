@@ -31,3 +31,25 @@
 
 en:
   hello: "Hello world"
+  photographers:
+    registrations:
+      new:
+        sign_up: "Sign up"
+        characters_min: "characters minimum"
+      edit:
+        edit: "Edit"
+        currently_waiting_confirmation_for: "Currently waiting confirmation for:"
+        leave_blank_if_no_changes: "(leave blank if you don't want to change it)"
+        need_current_pass: "(we need your current password to confirm your changes)"
+        sure?: "Are you sure?"
+        back: "Back"
+        cancel_acc: "Cancel my account"
+        unhappy?: "Unhappy?"
+        update: "Update"
+        characters_min: "characters minimum"
+    shared:
+      links:
+       forgot_password?: "Forgot your password?"
+       not_receive_confirmation_instructions?: "Didn't receive confirmation instructions?"
+       not_receive_unlock_instructions?: "Didn't receive unlock instructions?"
+       sign_in_with: "Sign in with %{provider}"
