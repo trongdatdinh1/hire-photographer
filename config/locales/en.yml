@@ -53,3 +53,10 @@ en:
        not_receive_confirmation_instructions?: "Didn't receive confirmation instructions?"
        not_receive_unlock_instructions?: "Didn't receive unlock instructions?"
        sign_in_with: "Sign in with %{provider}"
+  posts:
+    create:
+      new_post: "New post"
+      post_successfully_created: "Your post has successfully created"
+  static_pages:
+    home:
+      home_page: "Home page"
