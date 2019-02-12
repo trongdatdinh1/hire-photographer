@@ -15,6 +15,8 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "figaro"
 gem "mysql2"
 gem "devise"
+gem "ffaker"
+gem "i18n-js"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
