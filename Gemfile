@@ -17,6 +17,8 @@ gem "mysql2"
 gem "devise"
 gem "ffaker"
 gem "i18n-js"
+gem "pagy"
+gem "ransack"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

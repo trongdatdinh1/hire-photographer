@@ -34,3 +34,18 @@ end
     password: password,
     password_confirmation: password
 end
+
+99.times do |n|
+  title = FFaker::Book.title
+  hourly_rate = rand 1..999
+  location = FFaker::AddressUS.city
+  address = FFaker::AddressUS.street_address
+  hire_date = Date.current + rand(1..30)
+  customer = Customer.first
+  Post.create! title: title,
+    hourly_rate: hourly_rate,
+    location: location,
+    customer: customer,
+    address: address,
+    hire_date: hire_date
+end

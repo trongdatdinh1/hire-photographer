@@ -1,0 +1,23 @@
+<%= t ".post_list" %>
+<%= search_form_for @q do |f| %>
+  <%= f.label :title_cont %>
+  <%= f.search_field :title_cont, autocomplete: "off" %>
+  <br/>
+  <%= f.label :hourly_rate_gteq %>
+  <%= f.number_field :hourly_rate_gteq, in: 1.0..999 %>
+  <br/>
+  <%= f.label :hourly_rate_lteq %>
+  <%= f.number_field :hourly_rate_lteq, in: 1.0..999 %>
+  <br/>
+  <%= f.label :location_cont %>
+  <%= f.search_field :location_cont, autocomplete: "off" %>
+  <br/>
+
+  <%= f.submit %>
+<% end %>
+
+<% if customer_signed_in? %>
+  <%= render partial: "index_customer", locals: {posts: @posts, pagy: @pagy} %>
+<% elsif photographer_signed_in? %>
+  <%= render partial: "index_photographer", locals: {posts: @posts, pagy: @pagy} %>
+<% end %>

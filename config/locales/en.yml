@@ -54,9 +54,19 @@ en:
        not_receive_unlock_instructions?: "Didn't receive unlock instructions?"
        sign_in_with: "Sign in with %{provider}"
   posts:
+    must_login: "You must login to access that page"
+    index:
+      post_list: "Post list"
+      title: "Title"
+      hourly_rate: "Hourly rate"
+      location: "Location"
+      hire_date: "Hire date"
+      status: "Status"
+      apply: "Apply"
     create:
       new_post: "New post"
       post_successfully_created: "Your post has successfully created"
+      create: "Create"
   static_pages:
     home:
       home_page: "Home page"
