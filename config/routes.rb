@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   devise_for :customers
   resources :posts
   resources :requests, only: [:create, :destroy]
+  resources :galleries, only: [:new, :create, :show]
 end

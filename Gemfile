@@ -20,6 +20,8 @@ gem "i18n-js"
 gem "jquery-rails"
 gem "pagy"
 gem "ransack"
+gem "mini_magick"
+gem "jquery-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

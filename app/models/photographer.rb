@@ -7,6 +7,7 @@ class Photographer < ApplicationRecord
   has_many :posts
   has_many :requests
   has_many :applied_posts, through: :requests, source: :post
+  has_many :galleries
   has_one_attached :avatar
 
   validates :name, presence: true
