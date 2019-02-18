@@ -99,7 +99,9 @@ ActiveRecord::Schema.define(version: 2019_01_31_090032) do
     t.bigint "photographer_id"
     t.decimal "hourly_rate", precision: 10
     t.string "location"
-    t.string "status"
+    t.string "address"
+    t.date "hire_date"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_posts_on_customer_id"

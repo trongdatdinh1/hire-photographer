@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th><%= t ".title" %></th>
+    <th><%= t ".hourly_rate" %></th>
+    <th><%= t ".location" %></th>
+    <th><%= t ".hire_date" %></th>
+    <th><%= t ".status" %></th>
+  </tr>
+  <% posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.hourly_rate%></td>
+      <td><%= post.location %></td>
+      <td><%= post.hire_date %></td>
+      <td><%= post.status %></td>
+    </tr>
+  <% end %>
+</table>
+<%== pagy_nav(pagy) %>

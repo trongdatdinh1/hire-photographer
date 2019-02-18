@@ -6,7 +6,9 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.references :photographer, foreign_key: true
       t.decimal :hourly_rate
       t.string :location
-      t.string :status
+      t.string :address
+      t.date :hire_date
+      t.integer :status, default: 0
 
       t.timestamps
     end
