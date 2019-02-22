@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     if photographer_signed_in?
       @q = Post.available.latest.ransack params[:q]
       @pagy, @posts = pagy @q.result
+      @apply_post = current_photographer.requests.build
     elsif customer_signed_in?
       @q = Post.by_customer(current_customer).latest.ransack params[:q]
       @pagy, @posts = pagy @q.result

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_090032) do
+ActiveRecord::Schema.define(version: 2019_02_20_071825) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -108,8 +108,20 @@ ActiveRecord::Schema.define(version: 2019_01_31_090032) do
     t.index ["photographer_id"], name: "index_posts_on_photographer_id"
   end
 
+  create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "photographer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photographer_id"], name: "index_requests_on_photographer_id"
+    t.index ["post_id", "photographer_id"], name: "index_requests_on_post_id_and_photographer_id", unique: true
+    t.index ["post_id"], name: "index_requests_on_post_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "posts"
   add_foreign_key "posts", "customers"
   add_foreign_key "posts", "photographers"
+  add_foreign_key "requests", "photographers"
+  add_foreign_key "requests", "posts"
 end

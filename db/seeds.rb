@@ -5,6 +5,13 @@ Photographer.create! name: "Photographer 1",
     password: "123123",
     password_confirmation: "123123"
 
+Photographer.create! name: "Photographer 2",
+    phone: "123456789",
+    location: "Hanoi",
+    email: "photographer@gmail.com",
+    password: "123123",
+    password_confirmation: "123123"
+
 Customer.create! name: "Customer 1",
     email: "customer@email.com",
     password: "123123",
