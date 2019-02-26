@@ -17,6 +17,7 @@ gem "mysql2"
 gem "devise"
 gem "ffaker"
 gem "i18n-js"
+gem "jquery-rails"
 gem "pagy"
 gem "ransack"
 

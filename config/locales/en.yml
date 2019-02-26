@@ -63,6 +63,7 @@ en:
       hire_date: "Hire date"
       status: "Status"
       apply: "Apply"
+      cancel_request: "Cancel"
     create:
       new_post: "New post"
       post_successfully_created: "Your post has successfully created"

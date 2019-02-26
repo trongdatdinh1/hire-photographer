@@ -15,7 +15,7 @@
       <td><%= post.hire_date %></td>
       <td><%= post.status %></td>
       <td>
-        <button><%= t ".apply" %></button>
+        <%= render partial: "request_form", locals: {post: post, apply_post: apply_post} %>
       </td>
     </tr>
   <% end %>

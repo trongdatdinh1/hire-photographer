@@ -1,0 +1,9 @@
+<% if photographer_signed_in? %>
+  <div id="request_form_<%= post.id %>">
+    <% if current_photographer.applied?(post) %>
+      <%= render partial: "cancel", locals: {post: post} %>
+    <% else %>
+      <%= render partial: "apply", locals: {post: post, apply_post: apply_post} %>
+    <% end %>
+  </div>
+<% end %>

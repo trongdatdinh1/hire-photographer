@@ -19,5 +19,6 @@
 <% if customer_signed_in? %>
   <%= render partial: "index_customer", locals: {posts: @posts, pagy: @pagy} %>
 <% elsif photographer_signed_in? %>
-  <%= render partial: "index_photographer", locals: {posts: @posts, pagy: @pagy} %>
+  <%= render partial: "index_photographer",
+    locals: {posts: @posts, pagy: @pagy, apply_post: @apply_post} %>
 <% end %>

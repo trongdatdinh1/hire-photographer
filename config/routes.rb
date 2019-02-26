@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   }
   devise_for :customers
   resources :posts
+  resources :requests, only: [:create, :destroy]
 end
