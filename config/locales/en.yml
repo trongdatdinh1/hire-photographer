@@ -62,6 +62,8 @@ en:
        not_receive_confirmation_instructions?: "Didn't receive confirmation instructions?"
        not_receive_unlock_instructions?: "Didn't receive unlock instructions?"
        sign_in_with: "Sign in with %{provider}"
+    candidate:
+      accept_request: "Accept request"
   posts:
     must_login: "You must login to access that page"
     index:
@@ -77,6 +79,15 @@ en:
       new_post: "New post"
       post_successfully_created: "Your post has successfully created"
       create: "Create"
+    show:
+      no_permission: "You do not have permission!"
+      candidates: "Candidates"
+      send: "Send"
+    accept_request:
+      already_accepted_someone: "Already accepted someone's request"
+  messages:
+    no_permission: "You do not have permission!"
+    created_message: "Message has been successfully created"
   galleries:
     new:
       create_gallery: "Create gallery"
@@ -88,6 +99,9 @@ en:
     photo_fields:
       title: "Title"
       remove: "Remove"
+  request_handlers:
+    create:
+      accepted_request: "You have accepted the request!"
   static_pages:
     home:
       home_page: "Home page"

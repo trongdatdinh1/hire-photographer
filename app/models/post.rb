@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :photographer, optional: true
   has_many :requests
   has_many :candidates, through: :requests, source: :photographer
+  has_many :messages
 
   enum status: {available: 0, applied: 1, finished: 2, closed: 3}
 

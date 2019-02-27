@@ -1,0 +1,27 @@
+<p><%= @post.title %></p>
+<p><%= @post.hourly_rate %></p>
+<p><%= @post.hire_date %></p>
+<p><%= @post.address %></p>
+<p><%= @post.customer.email %></p>
+
+<% if @post.photographer %>
+  <%= @post.photographer.email %>
+<% else %>
+  <h3><%= t ".candidates"%></h3>
+  <div id="candidates">
+    <%= render partial: "photographers/candidate",
+      collection: @candidates, locals: {post: @post} %>
+  </div>
+<% end %>
+
+
+<input id="post_id" type="hidden" value="<%= @post.id %>" >
+
+<%= form_for [@post, @post.messages.new], remote: true do |f| %>
+  <%= f.text_area :content, id: "new_message" %>
+  <%= f.submit t(".send") %>
+<% end %>
+
+<div id="chat">
+  <%= render @messages %>
+</div>

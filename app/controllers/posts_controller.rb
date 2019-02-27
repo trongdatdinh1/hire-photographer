@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   include Pagy::Backend
 
-  before_action :authenticate_customer!, only: [:new, :create]
-  before_action :signed_in?, only: :index
+  before_action :authenticate_customer!, only: [:new, :create, :my_posts]
+  before_action :signed_in?, only: [:index, :show]
 
   def index
     if photographer_signed_in?
@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @message = Message.new
   end
 
   def create
@@ -26,6 +27,17 @@ class PostsController < ApplicationController
       redirect_to root_url
     else
       render "posts/new"
+    end
+  end
+
+  def show
+    @post = Post.find_by id: params[:id]
+    @messages = @post.messages
+    @candidates = @post.candidates
+    user = photographer_signed_in? ? current_photographer : current_customer
+    unless (@post.customer.eql?(user) || @post.photographer.eql?(user))
+      flash[:alert] = t ".no_permission"
+      redirect_to root_path
     end
   end
 
