@@ -1,0 +1,25 @@
+<%= t ".create_gallery" %>
+<%= form_for @gallery, class:"form-group" do |f| %>
+  <% if @gallery.errors.any? %>
+    <ul>
+      <% @gallery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :photos do |builder| %>
+      <%= render 'photo_fields', f: builder %>
+    <% end %>
+  </div>
+
+  <%= link_to_add_fields t(".add_more"), f, :photos %>
+
+  <%= f.submit t(".create") , class: "btn btn-warning form-control" %>
+<% end %>

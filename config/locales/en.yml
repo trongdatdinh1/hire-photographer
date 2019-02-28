@@ -31,6 +31,15 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        gallery:
+          attributes:
+            photos:
+              missing: "are missing"
+              need_to_be_jpg_jpeg_png: "need to be a JPG, JPEG or PNG"
+  some_thing_went_wrong: "Something went wrong"
   photographers:
     registrations:
       new:
@@ -68,6 +77,17 @@ en:
       new_post: "New post"
       post_successfully_created: "Your post has successfully created"
       create: "Create"
+  galleries:
+    new:
+      create_gallery: "Create gallery"
+      create: "Create"
+      add_more: "Add More"
+    create:
+      gallery_successfully_created: "Your gallery has successfully created"
+      create: "Create"
+    photo_fields:
+      title: "Title"
+      remove: "Remove"
   static_pages:
     home:
       home_page: "Home page"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_20_071825) do
+ActiveRecord::Schema.define(version: 2019_02_25_085521) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2019_02_20_071825) do
     t.index ["photographer_id"], name: "index_customers_photographers_on_photographer_id"
   end
 
+  create_table "galleries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "title"
+    t.bigint "photographer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photographer_id"], name: "index_galleries_on_photographer_id"
+  end
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.bigint "post_id"
@@ -93,6 +101,14 @@ ActiveRecord::Schema.define(version: 2019_02_20_071825) do
     t.index ["reset_password_token"], name: "index_photographers_on_reset_password_token", unique: true
   end
 
+  create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_photos_on_gallery_id"
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.bigint "customer_id"
@@ -119,7 +135,9 @@ ActiveRecord::Schema.define(version: 2019_02_20_071825) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "galleries", "photographers"
   add_foreign_key "messages", "posts"
+  add_foreign_key "photos", "galleries"
   add_foreign_key "posts", "customers"
   add_foreign_key "posts", "photographers"
   add_foreign_key "requests", "photographers"
