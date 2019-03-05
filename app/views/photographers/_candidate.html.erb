@@ -1,0 +1,6 @@
+<p><%= candidate.email %></p>
+<%= form_tag request_handlers_path, method: :post, remote: true do |f| %>
+  <%= hidden_field_tag :post_id, post.id %>
+  <%= hidden_field_tag :photographer_id, candidate.id %>
+  <%= submit_tag t(".accept_request") %>
+<% end %>

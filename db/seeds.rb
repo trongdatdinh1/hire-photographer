@@ -17,6 +17,11 @@ Customer.create! name: "Customer 1",
     password: "123123",
     password_confirmation: "123123"
 
+Customer.create! name: "Customer 2",
+    email: "customer@gmail.com",
+    password: "123123",
+    password_confirmation: "123123"
+
 99.times do |n|
   name = FFaker::Name.name
   phone = FFaker::PhoneNumberDA.phone_number
