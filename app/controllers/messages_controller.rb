@@ -10,8 +10,7 @@ class MessagesController < ApplicationController
     else
       @msg = Message.new post: @post, content: params[:message][:content]
       user.messages << @msg
-      flash[:notice] = t ".created_message"
-      redirect_to @post
+      ActionCable.server.broadcast "post_#{@post.id}", message: render_message(@msg)
     end
   end
 
@@ -22,5 +21,9 @@ class MessagesController < ApplicationController
       flash[:alert] = t ".must_login"
       redirect_to root_path
     end
+  end
+
+  def render_message message
+    self.render partial: "messages/message", locals: {message: message}
   end
 end

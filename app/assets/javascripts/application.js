@@ -17,4 +17,5 @@
 //= require i18n/translations
 //= require jquery
 //= require turbolinks
+//= require cable
 //= require_tree .

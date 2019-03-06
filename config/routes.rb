@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :requests, only: [:create, :destroy]
   resources :galleries, only: [:new, :create, :show]
   resources :request_handlers, only: [:create]
+
+  mount ActionCable.server => "/cable"
 end
