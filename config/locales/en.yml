@@ -105,3 +105,16 @@ en:
   static_pages:
     home:
       home_page: "Home page"
+  layouts:
+    header:
+      home: "Home"
+      hire_photographer: "Hire Photographer"
+      photographer: "Photographer"
+      login: "Login"
+      register: "Register"
+      customer: "Customer"
+      posts: "Posts"
+      settings: "Settings"
+      edit_profile: "Edit Profile"
+      create_gallery: "Create Gallery"
+      logout: "Logout"
