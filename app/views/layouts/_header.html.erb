@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <%= link_to t(".hire_photographer"), root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to t(".home"), root_path, class: "nav-link" %>
+        </li>
+        <% unless photographer_signed_in? || customer_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false"><%= t ".photographer"%></a>
+            <div class="dropdown-menu">
+              <%= link_to t(".login"), new_photographer_session_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to t(".register"), new_photographer_registration_path, class: "dropdown-item" %>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false"><%= t ".customer" %></a>
+            <div class="dropdown-menu">
+              <%= link_to t(".login"), new_customer_session_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to t(".register"), new_customer_registration_path, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% end %>
+        <% if photographer_signed_in? || customer_signed_in? %>
+          <li class="nav-item">
+            <%= link_to t(".posts"), posts_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        <% if photographer_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false"><%= t ".settings" %></a>
+            <div class="dropdown-menu">
+              <%= link_to t(".edit_profile"), edit_photographer_registration_path, class: "dropdown-item" %>
+              <%= link_to t(".create_gallery"), new_gallery_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to t("logout"), destroy_photographer_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% end %>
+        <% if customer_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false"><%= t ".settings" %></a>
+            <div class="dropdown-menu">
+              <div class="dropdown-divider"></div>
+              <%= link_to t(".logout"), destroy_customer_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
