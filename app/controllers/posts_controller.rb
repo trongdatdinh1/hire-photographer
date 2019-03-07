@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by id: params[:id]
-    @messages = @post.messages
+    @messages = @post.messages.latest
     @candidates = @post.candidates
     user = photographer_signed_in? ? current_photographer : current_customer
     unless (@post.customer.eql?(user) || @post.photographer.eql?(user))
