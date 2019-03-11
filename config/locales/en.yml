@@ -78,6 +78,8 @@ en:
         unhappy?: "Unhappy?"
         update: "Update"
         characters_min: "characters minimum"
+        upload_different_photo: "Upload a different photo..."
+        personal_info: "Personal info"
     shared:
       links:
        forgot_password?: "Forgot your password?"

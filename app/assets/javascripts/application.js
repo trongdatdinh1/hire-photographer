@@ -20,4 +20,6 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require cable
+//= require trix
+//= require toastr.min
 //= require_tree .

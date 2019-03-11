@@ -1,68 +1,93 @@
-<h2><%= t ".edit" %> <%= resource_name.to_s.humanize %></h2>
-<%= resource.email %>
-<% if resource.avatar.attached? %>
-  <%= image_tag resource.avatar, width: 110 %>
-<% end %>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+  <div class="container">
+    <h2><%= t ".edit" %> <%= resource_name.to_s.humanize %></h2>
+    <hr>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="text-center">
+          <% if resource.avatar.attached? %>
+            <%= image_tag resource.avatar, class: "avatar rounded-circle", width: 200 %>
+          <% else %>
+            <%= image_tag "default_profile.jpg", class: "avatar rounded-circle", width: 200 %>
+          <% end %>
+          <h6><%= t ".upload_different_photo"%></h6>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="col-md-9 personal-info">
+        <h3><%= t ".personal_info" %></h3>
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, autofocus: true %>
-  </div>
+        <div class="form-group">
+          <%= f.label :email, class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.email_field :email, autofocus: true, disabled: true, class: "form-control" %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location, autofocus: true %>
-  </div>
+        <div class="form-group">
+          <%= f.label :name, class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :phone, class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :phone, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :location, class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :location, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
 
-  <div class="field">
-
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= t ".currently_waiting_confirmation_for" %> <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i><%= t ".leave_blank_if_no_changes" %></i><br />
-    <%= f.password_field :password %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> <%= t ".characters_min"%></em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i><%= t ".need_current_pass" %></i><br />
-    <%= f.password_field :current_password %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t(".update") %>
+        <div class="form-group">
+          <%= f.label :description, class: "col-lg-3 control-label" %>
+          <div class="col-md-8">
+            <%= f.trix_editor :description, required: true, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, class: "col-lg-3 control-label" %>
+          <i><%= t ".leave_blank_if_no_changes" %></i>
+          <div class="col-md-8">
+            <%= f.password_field :password, autofocus: true, class: "form-control" %>
+            <% if @minimum_password_length %>
+              <em><%= @minimum_password_length %> <%= t ".characters_min"%></em>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, class: "col-lg-3 control-label" %>
+          <div class="col-md-8">
+            <%= f.password_field :password_confirmation, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :current_password, class: "col-lg-3 control-label" %>
+          <div class="col-md-8">
+            <%= f.password_field :current_password, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <%= f.submit t(".update"), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
-
 <h3><%= t ".cancel_acc" %></h3>
 
-<p><%= t ".unhappy?" %> <%= button_to t(".cancel_acc"), registration_path(resource_name), data: { confirm: I18n.t("photographers.registrations.edit.sure?") }, method: :delete %></p>
-
-<%= link_to t(".back"), :back %>
+<p><%= t ".unhappy?" %>
+  <%= button_to t(".cancel_acc"), registration_path(resource_name),
+  data: { confirm: I18n.t("photographers.registrations.edit.sure?") },
+  method: :delete, class: "btn btn-danger" %>
+</p>
