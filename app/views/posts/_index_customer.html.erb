@@ -1,19 +1,20 @@
-<table>
-  <tr>
-    <th><%= t ".title" %></th>
-    <th><%= t ".hourly_rate" %></th>
-    <th><%= t ".location" %></th>
-    <th><%= t ".hire_date" %></th>
-    <th><%= t ".status" %></th>
-  </tr>
-  <% posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.hourly_rate%></td>
-      <td><%= post.location %></td>
-      <td><%= post.hire_date %></td>
-      <td><%= post.status %></td>
-    </tr>
-  <% end %>
-</table>
-<%== pagy_nav(pagy) %>
+<div class="container">
+  <div class="list-group">
+    <% posts.each do |post| %>
+      <%= link_to post, class: "list-group-item list-group-item-action flex-column align-items-start" do %>
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= post.title %></h5>
+        </div>
+        <p class="mb-1"><%= t ".hourly_rate" %><b><%= post.hourly_rate %></b></p>
+        <p class="mb-1"><%= t ".location" %><b><%= post.location %></b></p>
+        <p class="mb-1"><%= t ".hire_date" %><b><%= post.hire_date %></b></p>
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"></h5>
+          <small>
+            <%= time_ago_in_words(post.created_at) %><%= t ".ago" %>
+          </small>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+<%== pagy_bootstrap_nav(pagy) %>
