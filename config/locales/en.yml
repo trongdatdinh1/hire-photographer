@@ -99,6 +99,7 @@ en:
       status: "Status"
       apply: "Apply"
       cancel_request: "Cancel"
+      search: "Search"
     create:
       new_post: "New post"
       post_successfully_created: "Your post has successfully created"
@@ -109,6 +110,16 @@ en:
       send: "Send"
     accept_request:
       already_accepted_someone: "Already accepted someone's request"
+    index_customer:
+      hourly_rate: "Hourly rate: "
+      location: "Location: "
+      hire_date: "Hire date: "
+      ago: "ago"
+    index_photographer:
+      hourly_rate: "Hourly rate: "
+      location: "Location: "
+      hire_date: "Hire date: "
+      ago: "ago"
   messages:
     no_permission: "You do not have permission!"
     created_message: "Message has been successfully created"
