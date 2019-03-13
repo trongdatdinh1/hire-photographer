@@ -32,6 +32,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by id: params[:id]
+    unless @post
+      flash[:notice] = t "some_thing_went_wrong"
+      redirect_to root_url
+      return
+    end
     @messages = @post.messages.latest
     @candidates = @post.candidates
     user = photographer_signed_in? ? current_photographer : current_customer

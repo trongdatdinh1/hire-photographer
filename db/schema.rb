@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_085521) do
     t.string "phone"
     t.string "provider"
     t.string "uid"
-    t.string "image"
+    t.string "avatar", default: "default_profile.jpg"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

@@ -108,6 +108,12 @@ en:
       no_permission: "You do not have permission!"
       candidates: "Candidates"
       send: "Send"
+      hourly_rate: "Hourly rate: "
+      location: "Location: "
+      hire_date: "Hire date: "
+      customer_email: "Customer Email: "
+      photographer_email: "Photographer Email: "
+      this_list_is_empty: "This list is empty!"
     accept_request:
       already_accepted_someone: "Already accepted someone's request"
     index_customer:
