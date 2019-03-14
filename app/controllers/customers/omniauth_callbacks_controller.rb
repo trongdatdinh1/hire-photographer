@@ -10,4 +10,15 @@ class Customers::OmniauthCallbacksController < Devise::OmniauthCallbacksControll
       redirect_to new_customer_registration_url
     end
   end
+
+  def google_oauth2
+    @customer = Customer.from_omniauth request.env["omniauth.auth"]
+    if @customer.persisted?
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: "Google"
+      sign_in_and_redirect @customer, event: :authentication
+    else
+      session["devise.google_data"] = request.env["omniauth.auth"]
+      redirect_to new_customer_registration_url
+    end
+  end
 end
