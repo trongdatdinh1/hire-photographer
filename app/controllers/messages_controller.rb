@@ -10,7 +10,6 @@ class MessagesController < ApplicationController
     else
       @msg = Message.new post: @post, content: params[:message][:content]
       user.messages << @msg
-      ActionCable.server.broadcast "post_#{@post.id}", message: render_message(@msg)
     end
   end
 

@@ -5,4 +5,6 @@ class Message < ApplicationRecord
   validates :content, presence: true
 
   scope :latest, ->{order id: :desc}
+
+  after_create_commit { MessageBroadcastJob.perform_later self}
 end

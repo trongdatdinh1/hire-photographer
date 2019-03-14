@@ -1,1 +1,10 @@
-<p><%= message.content %></p>
+<div class="message card mb-2">
+  <div class="card-body">
+    <% if message.messageable.class.to_s == "Photographer" && message.messageable.avatar.attached? || message.messageable.class.to_s == "Customer" && message.messageable.avatar %>
+        <%= image_tag message.messageable.avatar, width: 50, height: 50 %>
+    <% else %>
+      <%= image_tag "default_profile.jpg", width: 50, height: 50 %>
+    <% end%>
+    <%= message.content %>
+  </div>
+</div>

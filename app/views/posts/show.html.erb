@@ -1,27 +1,41 @@
-<p><%= @post.title %></p>
-<p><%= @post.hourly_rate %></p>
-<p><%= @post.hire_date %></p>
-<p><%= @post.address %></p>
-<p><%= @post.customer.email %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @post.title %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= t ".hourly_rate" %><%= @post.hourly_rate %></li>
+          <li class="list-group-item"><%= t ".hire_date" %><%= @post.hire_date %></li>
+          <li class="list-group-item"><%= t ".address" %><%= @post.address %></li>
+        </ul>
+        <div class="card-body">
+          <%= t ".customer_email" %><%= @post.customer.email %>
+          <% if @post.photographer %>
+            <%= t ".photographer_email" %><%= @post.photographer.email %>
+          <% end %>
+        </div>
+      </div>
 
-<% if @post.photographer %>
-  <%= @post.photographer.email %>
-<% else %>
-  <h3><%= t ".candidates"%></h3>
-  <div id="candidates">
-    <%= render partial: "photographers/candidate",
-      collection: @candidates, locals: {post: @post} %>
+      <% unless @post.photographer %>
+        <h3><%= t ".candidates"%></h3>
+        <div id="candidates">
+          <%= render(partial: "photographers/candidate",
+            collection: @candidates, locals: {post: @post}) || t(".this_list_is_empty") %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <input id="post_id" type="hidden" value="<%= @post.id %>" >
+      <%= form_for [@post, @post.messages.new], remote: true do |f| %>
+        <%= f.text_area :content, id: "new_message", class: "form-control" %>
+        <%= f.submit t(".send"), class: "btn btn-dark" %>
+      <% end %>
+      <div id="chat">
+        <%= render @messages %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-
-<input id="post_id" type="hidden" value="<%= @post.id %>" >
-
-<%= form_for [@post, @post.messages.new], remote: true do |f| %>
-  <%= f.text_area :content, id: "new_message" %>
-  <%= f.submit t(".send") %>
-<% end %>
-
-<div id="chat">
-  <%= render @messages %>
 </div>
