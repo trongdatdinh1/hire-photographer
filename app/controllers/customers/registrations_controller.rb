@@ -9,7 +9,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit :account_update, keys: [:name, :phone]
+    devise_parameter_sanitizer.permit :account_update, keys: [:name]
   end
 
   def update_resource resource, params

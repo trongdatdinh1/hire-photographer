@@ -1,0 +1,5 @@
+<h3><%= t ".verfy_pin" %></h3>
+<%= form_tag phone_verification_path, method: :patch do |f| %>
+  <%= text_field_tag :pin, nil, required: true %>
+  <%= submit_tag t(".verify"), class: "btn btn-danger" %>
+<% end %>

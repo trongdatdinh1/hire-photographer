@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :requests, only: [:create, :destroy]
   resources :galleries, only: [:new, :create, :show]
   resources :request_handlers, only: [:create]
+  resource :phone_verification, only: [:create, :edit, :update]
 
   mount ActionCable.server => "/cable"
 end
