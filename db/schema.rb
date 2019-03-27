@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_02_25_085521) do
     t.string "location"
     t.string "address"
     t.date "hire_date"
+    t.float "latitude"
+    t.float "longitude"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

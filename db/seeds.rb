@@ -47,7 +47,7 @@ end
     password_confirmation: password
 end
 
-99.times do |n|
+20.times do |n|
   title = FFaker::Book.title
   hourly_rate = rand 1..999
   location = FFaker::AddressUS.city

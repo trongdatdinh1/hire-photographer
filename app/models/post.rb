@@ -7,6 +7,9 @@ class Post < ApplicationRecord
 
   enum status: {available: 0, applied: 1, finished: 2, closed: 3}
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :title, presence: true, length: {in: 5..50}
   validates :hourly_rate, numericality: {greater_than: 0}
   validates :title, presence: true
