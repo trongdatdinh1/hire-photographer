@@ -7,4 +7,9 @@ module ApplicationHelper
     end
     link_to name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")}
   end
+
+  def activities
+    user = photographer_signed_in? ? current_photographer : current_customer
+    @activities = PublicActivity::Activity.where(recipient: user).order("created_at desc")
+  end
 end

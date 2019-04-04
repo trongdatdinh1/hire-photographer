@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   def create
     @post = current_customer.posts.build post_params
     if @post.save
+      @post.create_activity :create, owner: current_customer, recipient: current_customer
       flash[:notice] = t ".post_successfully_created"
       redirect_to root_url
     else

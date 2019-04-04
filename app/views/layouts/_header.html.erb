@@ -31,6 +31,14 @@
           <li class="nav-item">
             <%= link_to t(".posts"), posts_path, class: "nav-link" %>
           </li>
+          <li class="nav-item dropdown" data-behavior="notifications">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false"><%= t ".notification" %></a>
+            <div class="dropdown-menu" data-behavior="notification-items">
+              <% activities.each do |activity| %>
+                <%= render_activity activity %><br/>
+              <% end %>
+            </div>
+          </li>
         <% end %>
         <% if photographer_signed_in? %>
           <li class="nav-item dropdown">

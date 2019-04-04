@@ -30,6 +30,7 @@ gem "toastrjs-rails"
 gem "trix-rails", require: "trix"
 gem "geocoder"
 gem "twilio-ruby", "~> 5.21.2"
+gem "public_activity"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
+  include PublicActivity::Common
+
   belongs_to :post
   belongs_to :messageable, polymorphic: true
 

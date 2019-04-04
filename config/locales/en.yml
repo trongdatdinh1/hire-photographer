@@ -157,6 +157,18 @@ en:
     update:
       successfully_verified: "Successfully verified!"
       wrong_pin: "Wrong PIN"
+  public_activity:
+    post:
+      accept_request:
+        accepted_request: "accepted request"
+        post: "Post (%{title})"
+      create:
+        created_a: "Created a"
+        post: "Post (%{title})"
+    message:
+      create:
+        send_a: "Send a "
+        message: Message %{mess}
   static_pages:
     home:
       home_page: "Home page"

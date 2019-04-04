@@ -16,6 +16,7 @@ class RequestHandlersController < ApplicationController
     @post.photographer = @photographer
 
     if @post.save
+      @post.create_activity :accept_request, owner: current_customer, recipient: @photographer
       flash[:alert] = t ".accepted_request"
     else
       flash[:alert] = t ".some_thing_went_wrong"

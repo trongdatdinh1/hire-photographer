@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include PublicActivity::Common
+
   belongs_to :customer
   belongs_to :photographer, optional: true
   has_many :requests
