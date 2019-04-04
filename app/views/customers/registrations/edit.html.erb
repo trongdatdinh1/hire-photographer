@@ -1,34 +1,67 @@
-<h2><%= t ".edit" %> <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+  <h2><%= t ".edit" %> <%= resource_name.to_s.humanize %></h2>
+  <div class="center">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form", html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :phone %>
+        <% if current_customer.phone_verified %>
+          <span class="text-success"><%= t ".verified" %></span>
+        <% else %>
+          <span class="text-danger"><%= t ".not_verified" %></span>
+        <% end %>
+        <br />
+        <%= f.text_field :phone, autofocus: true, disabled: true, class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div><%= t ".currently_waiting_confirmation_for" %> <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#verifyPhoneModal">
+        <%= t ".verify_phone" %>
+      </button>
+
+      <div class="actions">
+        <%= f.submit t(".update"), class: "btn btn-dark float-right" %>
+      </div>
+    <% end %>
+
+    <%= link_to t(".back"), :back, class: "btn btn-information" %>
+
+
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+<div class="modal fade" id="verifyPhoneModal" tabindex="-1" role="dialog" aria-labelledby="verifyPhoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="verifyPhoneModalLabel"><%= t ".verify_phone" %></h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_tag phone_verification_path, method: :post, class: "form" do |f| %>
+        <div class="modal-body">
+          <%= text_field_tag :phone, nil, class: "form-control", autocomplete: "off", required: true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>
+          <%= submit_tag t(".verify"), class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= t ".currently_waiting_confirmation_for" %> <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit t(".update") %>
-  </div>
-<% end %>
-
-<h3><%= t ".cancel_acc" %></h3>
-
-<p><%= t ".unhappy?" %> <%= button_to t(".cancel_acc"), registration_path(resource_name), data: { confirm: I18n.t("customers.registrations.edit.sure?") }, method: :delete %></p>
-
-<%= link_to t(".back"), :back %>
+</div>

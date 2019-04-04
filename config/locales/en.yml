@@ -40,6 +40,7 @@ en:
               missing: "are missing"
               need_to_be_jpg_jpeg_png: "need to be a JPG, JPEG or PNG"
   some_thing_went_wrong: "Something went wrong"
+  your_pin_is: "Your pin is %{pin}"
   customers:
     registrations:
       new:
@@ -56,6 +57,11 @@ en:
         unhappy?: "Unhappy?"
         update: "Update"
         characters_min: "characters minimum"
+        verify: "Verify"
+        close: "Close"
+        verify_phone: "Verify Phone number"
+        verified: "Verified"
+        not_verified: "Not verified"
     shared:
       links:
        forgot_password?: "Forgot your password?"
@@ -143,6 +149,14 @@ en:
   request_handlers:
     create:
       accepted_request: "You have accepted the request!"
+  phone_verifications:
+    successfully_sent: "Successfully sent"
+    edit:
+      verfy_pin: "Verify PIN"
+      verify: "Verify"
+    update:
+      successfully_verified: "Successfully verified!"
+      wrong_pin: "Wrong PIN"
   static_pages:
     home:
       home_page: "Home page"

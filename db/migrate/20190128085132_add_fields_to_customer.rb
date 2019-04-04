@@ -5,5 +5,7 @@ class AddFieldsToCustomer < ActiveRecord::Migration[5.2]
     add_column :customers, :provider, :string
     add_column :customers, :uid, :string
     add_column :customers, :avatar, :string, default: "default_profile.jpg"
+    add_column :customers, :pin, :string
+    add_column :customers, :phone_verified, :boolean
   end
 end
